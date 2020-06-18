@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find mybot_navigation)/maps/mymap_empty.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Place map frame at odometry frame -->
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/>
+
+  <!-- Localization -->
+  <!-- Navsat Transform -->
+	  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node" respawn="true" clear_params="true">
+	    <param name="magnetic_declination_radians" value="0"/>
+	    <param name="yaw_offset" value="0"/>
+	    <param name="zero_altitude" value="true"/>
+
+	    <param name="use_odometry_yaw" value="false"/>
+	    <param name="wait_for_datum" value="false"/>
+	   
+	    <param name="publish_filtered_gps" value="true"/>
+	    <param name="broadcast_utm_transform" value="false"/>
+	    
+	    <remap from="/imu/data" to="/imu_data" />
+	    <remap from="/gps/fix" to="/fix" />
+	    <remap from="/odometry/filtered" to="/odometry/filtered" />
+	 </node>
+
+  <!-- EKF Node -->
+	<node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization_with_gps">
+	  <rosparam command="load" file="$(find mybot_navigation)/params/gps_imu_localization.yaml" />
+	</node>
+
+  <!-- Move base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find mybot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find mybot_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find mybot_navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mybot_navigation)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mybot_navigation)/config/base_local_planner_params.yaml" command="load" />
+    
+    <remap from="cmd_vel" to="cmd_vel"/>
+    <remap from="odom" to="odometry/filtered"/>
+    <remap from="scan" to="mybot/laser/scan"/>
+    <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/max_rot_vel" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/acc_lim_theta" value="10.0"/>
+
+
+
+  </node>
+
+
+</launch>
+
+

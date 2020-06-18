@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+
+  <!-- Map server -->
+  <arg name="map_file" default="$(find mybot_navigation)/maps/mymap_empty.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find mybot_description)/urdf/mybot.xacro'"/>
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="False"/>
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- Place map frame at odometry frame -->
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/>
+
+  <!-- Localization -->
+  <rosparam command="load" file="$(find mybot_navigation)/config/gps_imu_localization.yaml" />
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true"/>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="true">
+         <remap from="odometry/filtered" to="odometry/filtered_map"/>
+  </node>
+  
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true">
+         <remap from="imu/data" to="imu_data" />
+	 <remap from="gps/fix" to="fix" />
+         <remap from="odometry/filtered" to="odometry/filtered_map"/>
+  </node>
+
+  <!-- Move base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find mybot_navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find mybot_navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find mybot_navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mybot_navigation)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find mybot_navigation)/config/base_local_planner_params.yaml" command="load" />
+    
+    <remap from="cmd_vel" to="cmd_vel"/>
+    <remap from="odom" to="odometry/filtered"/>
+    <remap from="scan" to="mybot/laser/scan"/>
+    <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/max_rot_vel" value="1.0"/>
+    <param name="move_base/DWAPlannerROS/acc_lim_theta" value="10.0"/>
+  </node>
+
+
+</launch>
+
+

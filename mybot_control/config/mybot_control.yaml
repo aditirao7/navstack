@@ -1,0 +1,12 @@
+myrobot:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+
+  jackal_velocity_controller:
+    type: "diff_drive_controller/DiffDriveController"
+    left_wheel: ['left_wheel_hinge', 'left_wheel_fhinge']
+    right_wheel: ['right_wheel_hinge', 'right_wheel_fhinge']
+    pose_covariance_diagonal: [0.001, 0.001, 1000000.0, 1000000.0, 1000000.0, 0.03]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 1000000.0, 1000000.0, 0.03]
