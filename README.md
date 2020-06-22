@@ -2,13 +2,18 @@
   Gazebo simulation of a bot equipped with GPS navigation using navigation stack.
   
 ## How to Run
-   1. Clone repo inside workspace src.
-   2. On 4 separate terminals, run:
+   1. Install:
+      ```bash
+         sudo apt-get install ros-melodic-navigation
+         sudo apt-get install ros-melodic-robot_localization
+      ```
+   2. Clone repo inside workspace src.
+   3. On 4 separate terminals, run:
       ```bash
          catkin_make
          source devel/setup.bash
       ```
-   3. Then run:
+   4. Then run:
       ```bash
          roslaunch mybot_gazebo mybot_world.launch
          
