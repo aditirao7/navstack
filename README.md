@@ -12,7 +12,7 @@
       ```bash
          roslaunch mybot_gazebo mybot_world.launch
          roslaunch mybot_navigation localization.launch
-         roslaunch mybot_description mybot_rviz_amcl.launch
+         roslaunch mybot_description navigation_rviz.launch
          rosrun mybot_navigation goal.py 49.9000357573 8.8999449505
       ```
 
