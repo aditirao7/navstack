@@ -25,4 +25,8 @@
          chmod +x goal.py
          rosrun mybot_navigation goal.py 49.9000357573 8.8999449505
       ```
+   5. Give the GPS location for goal.py accordingly.
+   
+## Issues
+   - Goal that is too far will give warning: "goal is off the global costmap" in the localization terminal.
 
