@@ -2,8 +2,12 @@
   Gazebo simulation of a bot equipped with GPS navigation using navigation stack.
   
 ## How to Run
-   1. Clone repo inside workspace.
-   2. Change paths of all launch files.
+   1. Clone repo inside workspacen src.
+   2. Run
+      ```bash
+         catkin_make
+         source devel/setup.bash
+      ```
    3. Run the following commands on separate terminals:
       ```bash
          roslaunch mybot_gazebo mybot_world.launch
