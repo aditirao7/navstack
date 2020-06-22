@@ -5,7 +5,7 @@
    1. Install:
       ```bash
          sudo apt-get install ros-melodic-navigation
-         sudo apt-get install ros-melodic-robot_localization
+         sudo apt-get install ros-melodic-robot-localization
       ```
    2. Clone repo inside workspace src.
    3. On 4 separate terminals, run:
