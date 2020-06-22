@@ -7,7 +7,10 @@
          sudo apt-get install ros-melodic-navigation
          sudo apt-get install ros-melodic-robot-localization
       ```
-   2. Clone repo inside workspace src.
+   2. Clone repo **inside workspace src**.
+      ```bash
+         git clone https://github.com/aditirao7/gazebo.git
+      ```
    3. On 4 separate terminals, run:
       ```bash
          catkin_make
