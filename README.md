@@ -6,7 +6,7 @@
    
 ## RQT Graph
    ###### Active Nodes/Topics
-   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/active_rqt.jpg)
+   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_active.jpeg)
    
    ###### Nodes
    ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_graph.jpg)
