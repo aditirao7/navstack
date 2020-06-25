@@ -39,6 +39,5 @@
    5. Give the GPS location for goal.py accordingly.
    
 ## Issues
-   - Goal that is too far will give warning: "goal is off the global costmap" in the localization terminal.
    - GPS goal orientation is 1.0 because move_base requires goal orientation 
 
