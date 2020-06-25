@@ -5,6 +5,10 @@
    ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/tf_tree.jpg)
    
 ## RQT Graph
+   ###### Active Nodes/Topics
+   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/active_rqt.jpg)
+   
+   ###### Nodes
    ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_graph.jpg)
   
 ## How to Run
