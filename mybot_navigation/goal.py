@@ -4,26 +4,37 @@ import rospy
 import geonav_conversions as gc
 import actionlib
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+from geometry_msgs.msg import Point, PointStamped
 import sys
+import tf
 
 def movebase_client():
     
     lat=float(sys.argv[1])
     lon=float(sys.argv[2])
-    utmy, utmx, utmzone = gc.LLtoUTM(lat,lon)
-    print(utmx, utmy)
-
+    utm = gc.fromLatLong(lat,lon)
+    utm1 = gc.UTMPoint.toPoint(utm)
+    utm2 = PointStamped()
+    utm2.header.frame_id= "utm"
+    utm2.point = utm1
+    
     # Create an action client called "move_base" with action definition file "MoveBaseAction"
     client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
     # Waits until the action server has started up and started listening for goals.
     client.wait_for_server()
 
+    # Getting transform from utm to odom frame
+    listener = tf.TransformListener()
+    listener.waitForTransform("utm", "odom", rospy.Time(0),rospy.Duration(4.0))
+    odom = listener.transformPoint("odom", utm2)
+    
+
     # Creates a new goal with the MoveBaseGoal constructor
     goal = MoveBaseGoal()
-    goal.target_pose.header.frame_id = "utm"
+    goal.target_pose.header.frame_id = "odom"
     goal.target_pose.header.stamp = rospy.Time.now()
-    goal.target_pose.pose.position.x = utmx
-    goal.target_pose.pose.position.y = utmy
+    goal.target_pose.pose.position.x = odom.point.x
+    goal.target_pose.pose.position.y = odom.point.y
     goal.target_pose.pose.orientation.w = 1.0
     #goal.target_pose.pose.position.y = utmy
 
