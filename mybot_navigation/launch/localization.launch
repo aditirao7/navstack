@@ -2,10 +2,6 @@
 <launch>
   <master auto="start"/>
 
-  <!-- Map server >
-  <arg name="map_file" default="$(find mybot_navigation)/maps/mymap_empty.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /-->
-
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find mybot_description)/urdf/mybot.xacro'"/>
 
   <!-- send fake joint values -->
@@ -15,8 +11,8 @@
 
   <!-- Combine joint values -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
-
-  <!-- Place map frame at odometry frame -->
+  
+   <!-- Place map frame at odometry frame -->
   <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
       args="0 0 0 0 0 0 map odom 100"/>
 
@@ -46,13 +42,16 @@
     <remap from="cmd_vel" to="cmd_vel"/>
     <remap from="odom" to="odometry/filtered"/>
     <remap from="scan" to="mybot/laser/scan"/>
+    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
     <param name="move_base/DWAPlannerROS/yaw_goal_tolerance" value="1.0"/>
     <param name="move_base/DWAPlannerROS/xy_goal_tolerance" value="1.0"/>
     <param name="move_base/DWAPlannerROS/max_rot_vel" value="1.0"/>
     <param name="move_base/DWAPlannerROS/acc_lim_theta" value="10.0"/>
+    <param name="controller_frequency" value="10.0"/>
+
   </node>
 
 
 </launch>
-
 
