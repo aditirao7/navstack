@@ -4,7 +4,7 @@ ekf_se_odom:
   frequency: 30
   sensor_timeout: 0.1
   two_d_mode: false
-  transform_time_offset: 0.0
+  transform_time_offset: 0.09
   transform_timeout: 0.0
   print_diagnostics: true
   debug: false
@@ -75,7 +75,7 @@ ekf_se_map:
   frequency: 30
   sensor_timeout: 0.1
   two_d_mode: false
-  transform_time_offset: 0.0
+  transform_time_offset: 0.09
   transform_timeout: 0.0
   print_diagnostics: true
   debug: false
