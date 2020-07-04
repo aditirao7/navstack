@@ -2,9 +2,9 @@
 <launch>
   <master auto="start"/>
 
-  <!-- Map server -->
+  <!-- Map server >
   <arg name="map_file" default="$(find mybot_navigation)/maps/mymap_empty.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /-->
 
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find mybot_description)/urdf/mybot.xacro'"/>
 
