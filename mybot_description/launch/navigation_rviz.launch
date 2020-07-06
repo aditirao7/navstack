@@ -3,6 +3,10 @@
 
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find mybot_description)/urdf/mybot.xacro'"/>
 
+  <!-- Map server>
+  <arg name="map_file" default="$(find mybot_navigation)/maps/mymap_empty.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /-->
+
   <!-- send fake joint values -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="False"/>

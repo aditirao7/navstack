@@ -1,6 +1,6 @@
 image: mymap_empty.pgm
 resolution: 1
-origin: [-752.000000, -752.00000, 0.000000]
+origin: [-1000.000000, -1000.00000, 0.000000]
 negate: 0
 occupied_thresh: 0.65
 free_thresh: 0.196

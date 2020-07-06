@@ -8,6 +8,7 @@ ekf_se_odom:
   transform_timeout: 0.0
   print_diagnostics: true
   debug: false
+  predict_to_current_time: true
 
   map_frame: map
   odom_frame: odom
@@ -33,7 +34,7 @@ ekf_se_odom:
                 true,  true,  true]
   imu0_nodelay: false
   imu0_differential: false
-  imu0_relative: false
+  imu0_relative: true
   imu0_queue_size: 10
   imu0_remove_gravitational_acceleration: true
 
@@ -79,6 +80,7 @@ ekf_se_map:
   transform_timeout: 0.0
   print_diagnostics: true
   debug: false
+  predict_to_current_time: true
 
   map_frame: map
   odom_frame: odom
@@ -115,7 +117,7 @@ ekf_se_map:
                 true,  true,  true]
   imu0_nodelay: true
   imu0_differential: false
-  imu0_relative: false
+  imu0_relative: true
   imu0_queue_size: 10
   imu0_remove_gravitational_acceleration: true
 
@@ -156,9 +158,10 @@ ekf_se_map:
 navsat_transform:
   frequency: 30
   delay: 3.0
-  magnetic_declination_radians: 0.0429351  # For lat/long 55.944831, -3.186998
+  magnetic_declination_radians: 0.0  # For lat/long 55.944831, -3.186998
   yaw_offset: 1.570796327  # IMU reads 0 facing magnetic north, not east
-  zero_altitude: false
+#  use_sim_time: true
+  zero_altitude: true
   broadcast_utm_transform: true
   publish_filtered_gps: true
   use_odometry_yaw: false

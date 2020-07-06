@@ -49,9 +49,11 @@
     <param name="move_base/DWAPlannerROS/max_rot_vel" value="1.0"/>
     <param name="move_base/DWAPlannerROS/acc_lim_theta" value="10.0"/>
     <param name="controller_frequency" value="10.0"/>
+    <param name="navfn/NavfnROS/old_navfn_behaviour" value="true"/>
 
   </node>
 
 
 </launch>
+
 

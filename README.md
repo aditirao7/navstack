@@ -1,20 +1,11 @@
 # Gazebo Simulation
   Gazebo simulation of a bot equipped with GPS navigation using navigation stack.
   
-## TF Tree
-   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/tf_tree.jpg)
-   
-## RQT Graph
-   ###### Active Nodes/Topics
-   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_active.jpeg)
-   
-   ###### Nodes
-   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_graph.jpg)
-  
 ## How to Run
    1. Install:
       ```bash
-         sudo apt-get install ros-melodic-navigation && sudo apt-get install ros-melodic-robot-localization
+         sudo apt-get install ros-melodic-navigation
+         sudo apt-get install ros-melodic-robot-localization
       ```
    2. Clone repo **inside workspace src**.
       ```bash
@@ -22,7 +13,8 @@
       ```
    3. On 4 separate terminals, run:
       ```bash
-         catkin_make && source devel/setup.bash
+         catkin_make
+         source devel/setup.bash
       ```
    4. Then run:
       ```bash
@@ -39,5 +31,6 @@
    5. Give the GPS location for goal.py accordingly.
    
 ## Issues
+   - Goal that is too far will give warning: "goal is off the global costmap" in the localization terminal.
    - GPS goal orientation is 1.0 because move_base requires goal orientation 
 

@@ -10,5 +10,5 @@ global_costmap:
   always_send_full_costmap: true
   static_layer: {enabled: true, lethal_cost_threshold: 100, track_unknown_space: true, unknown_cost_value: -1}
   rolling_window: true
-  width: 200.0
-  height: 200.0
+  width: 2000.0
+  height: 2000.0
