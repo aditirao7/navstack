@@ -9,7 +9,7 @@
       ```
    2. Clone repo **inside workspace src**.
       ```bash
-         git clone https://github.com/aditirao7/gazebo.git
+         git clone https://github.com/aditirao7/nav_stack.git
       ```
    3. On 4 separate terminals, run:
       ```bash
