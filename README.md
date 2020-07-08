@@ -13,8 +13,7 @@
       ```
    3. On 4 separate terminals, run:
       ```bash
-         catkin_make
-         source devel/setup.bash
+         catkin_make && source devel/setup.bash
       ```
    4. Then run:
       ```bash
