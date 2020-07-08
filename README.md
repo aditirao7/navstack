@@ -1,6 +1,17 @@
 # Navigation Stack
   Gazebo simulation of a bot equipped with GPS navigation using navigation stack.
   
+## RQT Graphs 
+   
+   ##### Active Nodes/Topics
+   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_active.jpeg)
+         
+   ##### Nodes
+   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rqt_graph.jpg)
+         
+## TF Tree
+   ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/tf_tree.jpg)
+  
 ## How to Run
    1. Install:
       ```bash
