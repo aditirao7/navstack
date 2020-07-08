@@ -1,4 +1,4 @@
-# Gazebo Simulation
+# Navigation Stack
   Gazebo simulation of a bot equipped with GPS navigation using navigation stack.
   
 ## How to Run
