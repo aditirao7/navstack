@@ -18,11 +18,11 @@
          sudo apt-get install ros-melodic-navigation
          sudo apt-get install ros-melodic-robot-localization
       ```
-   2. Clone repo **inside workspace src**.
+   2. Clone repo:
       ```bash
          git clone https://github.com/aditirao7/nav_stack.git
       ```
-   3. On 4 separate terminals, run:
+   3. On 4 separate terminals, run (inside repo folder nav_stack):
       ```bash
          catkin_make && source devel/setup.bash
       ```
@@ -34,7 +34,7 @@
          
          roslaunch mybot_description navigation_rviz.launch
          
-         cd src/gazebo/mybot_navigation
+         cd src/mybot_navigation
          chmod +x goal.py
          rosrun mybot_navigation goal.py 49.9000357573 8.8999449505
       ```
