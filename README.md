@@ -1,11 +1,8 @@
 # Navigation Stack
   Gazebo simulation of a bot equipped with GPS navigation using navigation stack.
   
-  ##### Gazebo
-  ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/gazebo_nav_stack.gif)
-  
-  ##### Rviz
-  ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rviz_nav_stack.gif)
+  ##### Gazebo    ##### Rviz
+  ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/gazebo_nav_stack.gif) ![alt text](https://github.com/aditirao7/nav_stack/blob/master/graphs/rviz_nav_stack.gif) 
   
 ## RQT Graphs 
    
